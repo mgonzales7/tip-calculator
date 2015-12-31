@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Tip Calculator"
         outputView.alpha = 0
         tipControl.alpha = 0
         tipLabel.text = "$0.00"
@@ -31,6 +31,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let tipVal = defaults.integerForKey("default_percentage")
+        
+        tipControl.selectedSegmentIndex = tipVal
+        
+    }
+    
     @IBAction func onEdit(sender: AnyObject) {
         
         
